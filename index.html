@@ -1,0 +1,1533 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Justin Jose B. Salvador - Frontend Developer Portfolio</title>
+    <meta name="description"
+        content="Computer Science graduate specializing in web development (HTML, CSS, JavaScript), database management, and modern frontend technologies.">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Animation Libraries -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'blob': 'blob 7s infinite',
+                        'gradient-shift': 'gradientShift 3s ease infinite',
+                        'bounce-slow': 'bounce 3s infinite',
+                        'spin-slow': 'spin 8s linear infinite',
+                        'pulse-ring': 'pulseRing 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite',
+                        'avatar-glow': 'avatarGlow 3s ease-in-out infinite',
+                        'rotate-slow': 'rotateSlow 20s linear infinite',
+                        'rotate-reverse': 'rotateReverse 15s linear infinite',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Animations */
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes blob {
+            0% {
+                transform: translate(0px, 0px) scale(1);
+            }
+
+            33% {
+                transform: translate(30px, -50px) scale(1.1);
+            }
+
+            66% {
+                transform: translate(-20px, 20px) scale(0.9);
+            }
+
+            100% {
+                transform: translate(0px, 0px) scale(1);
+            }
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes pulseRing {
+            0% {
+                transform: scale(0.8);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(2.4);
+                opacity: 0;
+            }
+        }
+
+        @keyframes avatarGlow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(59, 130, 246, 0.5), 0 0 40px rgba(59, 130, 246, 0.3), 0 0 60px rgba(59, 130, 246, 0.1);
+            }
+
+            50% {
+                box-shadow: 0 0 30px rgba(59, 130, 246, 0.8), 0 0 60px rgba(59, 130, 246, 0.5), 0 0 90px rgba(59, 130, 246, 0.3);
+            }
+        }
+
+        @keyframes rotateSlow {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes rotateReverse {
+            from {
+                transform: rotate(360deg);
+            }
+
+            to {
+                transform: rotate(0deg);
+            }
+        }
+
+        /* Professional Styling */
+        .gradient-text {
+            background: linear-gradient(-45deg, #3b82f6, #60a5fa, #06b6d4, #0ea5e9);
+            background-size: 400% 400%;
+            animation: gradientShift 3s ease infinite;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hover-glow:hover {
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .hover-lift {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-magic {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-magic::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-magic:hover::before {
+            left: 100%;
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background-color: #3b82f6;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .skill-bar {
+            width: 0%;
+            transition: width 2s ease-in-out;
+        }
+
+        .floating-dot {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .pulse-glow {
+            animation: pulseGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+
+            0%,
+            100% {
+                opacity: 0.6;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+        }
+
+        .loading-spinner {
+            border: 4px solid rgba(59, 130, 246, 0.3);
+            border-radius: 50%;
+            border-top: 4px solid #3b82f6;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+
+        /* Enhanced Profile Frame Styles */
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+
+        /* Decorative Frame Design */
+        .decorative-frame {
+            position: relative;
+            padding: 20px;
+            background: linear-gradient(45deg, #1e40af, #3b82f6, #60a5fa, #06b6d4);
+            border-radius: 2rem;
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);
+        }
+
+        .decorative-frame::before {
+            content: '';
+            position: absolute;
+            inset: 8px;
+            background: linear-gradient(135deg, #0f172a, #1e293b, #334155);
+            border-radius: 1.5rem;
+            z-index: 1;
+        }
+
+        .decorative-frame::after {
+            content: '';
+            position: absolute;
+            inset: 12px;
+            background: linear-gradient(45deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+            border-radius: 1.2rem;
+            z-index: 2;
+        }
+
+        .frame-inner {
+            position: relative;
+            z-index: 3;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Corner Decorations */
+        .corner-decoration {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            z-index: 4;
+        }
+
+        .corner-decoration::before,
+        .corner-decoration::after {
+            content: '';
+            position: absolute;
+            background: linear-gradient(45deg, #60a5fa, #3b82f6);
+            border-radius: 50%;
+        }
+
+        .corner-decoration::before {
+            width: 8px;
+            height: 8px;
+            top: 4px;
+            left: 4px;
+        }
+
+        .corner-decoration::after {
+            width: 4px;
+            height: 4px;
+            top: 16px;
+            left: 16px;
+            background: linear-gradient(45deg, #06b6d4, #0ea5e9);
+        }
+
+        .corner-top-left {
+            top: -10px;
+            left: -10px;
+        }
+
+        .corner-top-right {
+            top: -10px;
+            right: -10px;
+            transform: rotate(90deg);
+        }
+
+        .corner-bottom-left {
+            bottom: -10px;
+            left: -10px;
+            transform: rotate(-90deg);
+        }
+
+        .corner-bottom-right {
+            bottom: -10px;
+            right: -10px;
+            transform: rotate(180deg);
+        }
+
+        /* Rotating Border Elements */
+        .rotating-border {
+            position: absolute;
+            inset: -15px;
+            border: 2px solid transparent;
+            border-radius: 2rem;
+            background: linear-gradient(45deg, #3b82f6, #60a5fa, #06b6d4, #0ea5e9) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: subtract;
+            mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            mask-composite: subtract;
+            animation: rotate-slow 20s linear infinite;
+            opacity: 0.6;
+        }
+
+        .rotating-border-reverse {
+            position: absolute;
+            inset: -25px;
+            border: 1px solid transparent;
+            border-radius: 2.5rem;
+            background: linear-gradient(-45deg, #06b6d4, #0ea5e9, #3b82f6, #60a5fa) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: subtract;
+            mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            mask-composite: subtract;
+            animation: rotate-reverse 15s linear infinite;
+            opacity: 0.4;
+        }
+
+        /* Tech Icons Around Frame */
+        .tech-icon {
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+            z-index: 5;
+        }
+
+        .tech-icon-1 {
+            top: 20px;
+            left: -16px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .tech-icon-2 {
+            top: 50%;
+            right: -16px;
+            animation: float 3s ease-in-out infinite 1s;
+        }
+
+        .tech-icon-3 {
+            bottom: 20px;
+            left: -16px;
+            animation: float 3s ease-in-out infinite 2s;
+        }
+
+        .tech-icon-4 {
+            top: -16px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: float 3s ease-in-out infinite 0.5s;
+        }
+
+        .tech-icon-5 {
+            bottom: -16px;
+            right: 30%;
+            animation: float 3s ease-in-out infinite 1.5s;
+        }
+
+        /* Fallback placeholder styles */
+        .avatar-placeholder {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .avatar-placeholder::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            }
+
+            100% {
+                transform: translateX(100%) translateY(100%) rotate(45deg);
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #3b82f6, #60a5fa);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(45deg, #2563eb, #3b82f6);
+        }
+
+        /* Text selection */
+        ::selection {
+            background: rgba(59, 130, 246, 0.3);
+            color: white;
+        }
+
+        /* Professional typography */
+        .professional-text {
+            line-height: 1.7;
+            letter-spacing: 0.025em;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .gradient-text {
+                font-size: 2rem;
+            }
+
+            .tech-icon {
+                width: 24px;
+                height: 24px;
+                font-size: 12px;
+            }
+
+            .decorative-frame {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-br from-gray-900 via-blue-900 to-black text-white overflow-x-hidden">
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="fixed inset-0 bg-gray-900 flex items-center justify-center z-50">
+        <div class="text-center">
+            <div class="loading-spinner mx-auto mb-4"></div>
+            <p class="text-white text-lg">Loading Excellence...</p>
+        </div>
+    </div>
+
+    <!-- Animated Background -->
+    <div class="fixed inset-0 z-0">
+        <div
+            class="absolute top-20 left-10 w-72 h-72 bg-blue-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse">
+        </div>
+        <div class="absolute top-40 right-10 w-72 h-72 bg-cyan-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"
+            style="animation-delay: 2s;"></div>
+        <div class="absolute bottom-20 left-20 w-72 h-72 bg-indigo-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"
+            style="animation-delay: 4s;"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-black/30 backdrop-blur-sm border-b border-gray-700/50 transition-all duration-300"
+        id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="text-2xl font-bold text-white" data-aos="fade-right">
+                    JUSTIN<span class="text-blue-500 animate-pulse">●</span>
+                </div>
+
+                <div class="hidden md:flex space-x-8" data-aos="fade-down" data-aos-delay="200">
+                    <a href="#home" class="nav-link text-gray-300 hover:text-white transition-all font-medium">Home</a>
+                    <a href="#about"
+                        class="nav-link text-gray-300 hover:text-white transition-all font-medium">About</a>
+                    <a href="#skills"
+                        class="nav-link text-gray-300 hover:text-white transition-all font-medium">Skills</a>
+                    <a href="#portfolio"
+                        class="nav-link text-gray-300 hover:text-white transition-all font-medium">Portfolio</a>
+                    <a href="#contact"
+                        class="nav-link text-gray-300 hover:text-white transition-all font-medium">Contact</a>
+                </div>
+
+                <button
+                    class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full font-medium transition-all hover:scale-105 btn-magic"
+                    data-aos="fade-left" onclick="scrollToSection('contact')">
+                    Let's Build Together ✨
+                </button>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-white" id="mobile-menu-btn">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="md:hidden bg-black/90 backdrop-blur-sm border-t border-gray-700/50 hidden" id="mobile-menu">
+            <div class="px-4 py-4 space-y-2">
+                <a href="#home" class="block text-gray-300 hover:text-white py-2">Home</a>
+                <a href="#about" class="block text-gray-300 hover:text-white py-2">About</a>
+                <a href="#skills" class="block text-gray-300 hover:text-white py-2">Skills</a>
+                <a href="#portfolio" class="block text-gray-300 hover:text-white py-2">Portfolio</a>
+                <a href="#contact" class="block text-gray-300 hover:text-white py-2">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center pt-20 px-4 relative z-10">
+        <div class="max-w-6xl w-full">
+            <div class="bg-black/50 rounded-3xl shadow-2xl overflow-hidden backdrop-blur-sm border border-gray-700/50 hover-glow"
+                data-aos="zoom-in" data-aos-duration="1000">
+                <div class="grid lg:grid-cols-2 min-h-[600px]">
+                    <!-- Left Content -->
+                    <div class="p-8 lg:p-12 flex flex-col justify-center">
+                        <div class="space-y-6">
+                            <div class="space-y-4">
+                                <p class="text-lg text-gray-300 font-medium flex items-center gap-2 professional-text"
+                                    data-aos="fade-up" data-aos-delay="200">
+                                    <i data-lucide="sparkles" class="w-5 h-5 text-blue-400"></i>
+                                    Hello! I'm
+                                </p>
+                                <h1 class="text-4xl lg:text-5xl font-bold text-white leading-tight" data-aos="fade-up"
+                                    data-aos-delay="400">
+                                    <span id="typed-name"></span>
+                                </h1>
+                                <h2 class="text-3xl lg:text-4xl font-bold" data-aos="fade-up" data-aos-delay="600">
+                                    <span class="gradient-text" id="role-text">Computer Science Graduate</span>
+                                </h2>
+                            </div>
+
+                            <p class="text-gray-300 leading-relaxed max-w-md professional-text" data-aos="fade-up"
+                                data-aos-delay="800">
+                                Computer Science graduate with expertise in web development (HTML, CSS, JavaScript),
+                                database management, and software development. Passionate about creating modern web
+                                interfaces and solving complex technical problems.
+                            </p>
+
+                            <div class="flex items-center gap-2 text-sm text-blue-300 professional-text"
+                                data-aos="fade-up" data-aos-delay="1000">
+                                <i data-lucide="map-pin" class="w-4 h-4"></i>
+                                <span>Flamingo Village, Upper Calarian, Zamboanga City, Philippines</span>
+                            </div>
+
+                            <div class="flex flex-wrap gap-4 pt-4" data-aos="fade-up" data-aos-delay="1200">
+                                <button
+                                    class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-all hover:scale-105 btn-magic flex items-center gap-2"
+                                    onclick="scrollToSection('portfolio')">
+                                    <i data-lucide="eye" class="w-4 h-4"></i>
+                                    View My Work
+                                </button>
+                                <button
+                                    class="border-2 border-blue-600 hover:bg-blue-600 text-blue-300 hover:text-white px-8 py-3 rounded-lg font-semibold transition-all hover:scale-105 flex items-center gap-2"
+                                    onclick="downloadResume()">
+                                    <i data-lucide="download" class="w-4 h-4"></i>
+                                    Download Resume
+                                </button>
+                            </div>
+
+                            <div class="flex items-center gap-4 pt-6" data-aos="fade-up" data-aos-delay="1400">
+                                <button
+                                    class="social-btn w-12 h-12 bg-gray-800/50 hover:bg-blue-600 rounded-full flex items-center justify-center transition-all hover:scale-110"
+                                    onclick="openLink('https://www.linkedin.com/in/justin-salvador-32761536a/')">
+                                    <i data-lucide="linkedin" class="w-5 h-5 text-gray-400 hover:text-white"></i>
+                                </button>
+                                <button
+                                    class="social-btn w-12 h-12 bg-gray-800/50 hover:bg-blue-600 rounded-full flex items-center justify-center transition-all hover:scale-110"
+                                    onclick="openLink('https://github.com/ShinoX0426')">
+                                    <i data-lucide="github" class="w-5 h-5 text-gray-400 hover:text-white"></i>
+                                </button>
+                                <button
+                                    class="social-btn w-12 h-12 bg-gray-800/50 hover:bg-blue-600 rounded-full flex items-center justify-center transition-all hover:scale-110"
+                                    onclick="openLink('mailto:bjustinsalvador@gmail.com')">
+                                    <i data-lucide="mail" class="w-5 h-5 text-gray-400 hover:text-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Photo Section - Enhanced with Decorative Frame -->
+                    <div class="relative flex justify-center items-center p-8">
+                        <div class="relative" data-aos="fade-left" data-aos-delay="600">
+                            <!-- Enhanced Profile Image Container with Decorative Frame -->
+                            <div class="relative w-80 h-96 flex items-center justify-center">
+                                <!-- Rotating Border Elements -->
+                                <div class="rotating-border"></div>
+                                <div class="rotating-border-reverse"></div>
+
+                                <!-- Main Decorative Frame -->
+                                <div class="decorative-frame w-full h-full">
+                                    <!-- Corner Decorations -->
+                                    <div class="corner-decoration corner-top-left"></div>
+                                    <div class="corner-decoration corner-top-right"></div>
+                                    <div class="corner-decoration corner-bottom-left"></div>
+                                    <div class="corner-decoration corner-bottom-right"></div>
+
+                                    <!-- Tech Icons Around Frame -->
+                                    <div class="tech-icon tech-icon-1" title="HTML5">
+                                        <i data-lucide="code" class="w-4 h-4"></i>
+                                    </div>
+                                    <div class="tech-icon tech-icon-2" title="JavaScript">
+                                        <i data-lucide="zap" class="w-4 h-4"></i>
+                                    </div>
+                                    <div class="tech-icon tech-icon-3" title="Database">
+                                        <i data-lucide="database" class="w-4 h-4"></i>
+                                    </div>
+                                    <div class="tech-icon tech-icon-4" title="Web Development">
+                                        <i data-lucide="globe" class="w-4 h-4"></i>
+                                    </div>
+                                    <div class="tech-icon tech-icon-5" title="Programming">
+                                        <i data-lucide="terminal" class="w-4 h-4"></i>
+                                    </div>
+
+                                    <!-- Inner Frame Container -->
+                                    <div class="frame-inner w-full h-full">
+                                        <!-- Profile Photo -->
+                                        <img id="profile-photo" src="images/justin.jpg"
+                                            alt="Justin Jose B. Salvador - Computer Science Graduate"
+                                            class="profile-image" onerror="showFallbackAvatar(this)" />
+
+                                        <!-- Fallback Avatar (hidden by default, shown if image fails to load) -->
+                                        <div id="fallback-avatar"
+                                            class="avatar-placeholder w-full h-full absolute inset-0 flex items-center justify-center"
+                                            style="display: none;">
+                                            <!-- Background Pattern -->
+                                            <div class="absolute inset-0 opacity-20">
+                                                <div
+                                                    class="absolute top-4 left-4 w-8 h-8 bg-white/20 rounded-full animate-pulse">
+                                                </div>
+                                                <div class="absolute top-12 right-8 w-4 h-4 bg-white/30 rounded-full animate-pulse"
+                                                    style="animation-delay: 0.5s;"></div>
+                                                <div class="absolute bottom-16 left-8 w-6 h-6 bg-white/25 rounded-full animate-pulse"
+                                                    style="animation-delay: 1s;"></div>
+                                                <div class="absolute bottom-8 right-4 w-5 h-5 bg-white/20 rounded-full animate-pulse"
+                                                    style="animation-delay: 1.5s;"></div>
+                                            </div>
+
+                                            <!-- Main Content -->
+                                            <div class="text-center z-10 space-y-6">
+                                                <!-- Large Avatar Icon -->
+                                                <div
+                                                    class="w-32 h-32 bg-white/20 rounded-full flex items-center justify-center mx-auto backdrop-blur-sm border border-white/30 animate-bounce-slow">
+                                                    <i data-lucide="user" class="w-16 h-16 text-white"></i>
+                                                </div>
+
+                                                <!-- Text Content -->
+                                                <div class="space-y-3">
+                                                    <h3 class="text-2xl font-bold text-white">Justin Salvador</h3>
+                                                    <p class="text-white/80 text-sm leading-relaxed">Computer Science
+                                                        Graduate</p>
+                                                    <div
+                                                        class="flex items-center justify-center gap-2 text-white/60 text-xs">
+                                                        <i data-lucide="camera" class="w-4 h-4"></i>
+                                                        <span>Add your photo here</span>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Animated Elements -->
+                                                <div class="flex justify-center space-x-2">
+                                                    <div class="w-2 h-2 bg-white/40 rounded-full animate-pulse"></div>
+                                                    <div class="w-2 h-2 bg-white/40 rounded-full animate-pulse"
+                                                        style="animation-delay: 0.3s;"></div>
+                                                    <div class="w-2 h-2 bg-white/40 rounded-full animate-pulse"
+                                                        style="animation-delay: 0.6s;"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4 relative z-10">
+        <div class="max-w-6xl mx-auto">
+            <div class="bg-black/50 rounded-3xl shadow-2xl p-8 lg:p-12 backdrop-blur-sm border border-gray-700/50"
+                data-aos="fade-up">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl lg:text-5xl font-bold mb-4 text-white" data-aos="fade-up">
+                        About <span class="gradient-text">Me</span>
+                    </h2>
+                    <p class="text-gray-300 max-w-2xl mx-auto text-lg professional-text" data-aos="fade-up"
+                        data-aos-delay="200">
+                        Computer Science graduate passionate about web development
+                    </p>
+                </div>
+
+                <div class="grid lg:grid-cols-3 gap-8">
+                    <div class="lg:col-span-2">
+                        <div class="bg-gray-900/50 rounded-2xl p-8 border border-gray-700/50 hover-lift"
+                            data-aos="fade-right" data-aos-delay="300">
+                            <div class="flex items-center gap-2 mb-6">
+                                <i data-lucide="user" class="text-blue-600 w-5 h-5"></i>
+                                <h3 class="text-xl font-semibold text-white">My Professional Journey</h3>
+                            </div>
+                            <div class="space-y-4 text-gray-300 professional-text">
+                                <p class="leading-relaxed">
+                                    As a Computer Science graduate from Western Mindanao State University, I have
+                                    developed expertise in web development technologies including HTML, CSS, and
+                                    JavaScript. My educational background in Science, Technology, Engineering, and
+                                    Mathematics has provided me with a strong foundation in logical thinking and
+                                    problem-solving.
+                                </p>
+                                <p class="leading-relaxed">
+                                    I specialize in database management, software development, and project management.
+                                    My experience includes working with modern web interfaces, Laravel framework, C++,
+                                    Python, and MySQL operations through XAMPP. I am a self-directed learner with strong
+                                    technical problem-solving abilities.
+                                </p>
+                                <p class="leading-relaxed">
+                                    I have completed professional training including Network Defense Essential Training
+                                    and On-the-Job Training in industry settings. I am also a certified member of the
+                                    Philippine Society of Information Technology and was an active member of the Google
+                                    Developer Student Club.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="bg-gray-900/50 rounded-2xl p-6 border border-gray-700/50 hover-lift"
+                            data-aos="fade-left" data-aos-delay="400">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div
+                                    class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center animate-bounce-slow">
+                                    <i data-lucide="award" class="text-white w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-white">Professional Details</h3>
+                                    <p class="text-gray-300 text-sm">Personal information</p>
+                                </div>
+                            </div>
+                            <div class="space-y-3 text-sm professional-text">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-300">Nationality</span>
+                                    <span class="text-white">Filipino</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-300">Date of Birth</span>
+                                    <span class="text-white">November 21, 2003</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-300">Education</span>
+                                    <span class="text-white">BS Computer Science</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-300">Status</span>
+                                    <span class="text-green-400 animate-pulse">Available for Work</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-900/50 rounded-2xl p-6 text-center border border-gray-700/50 hover-lift"
+                            data-aos="fade-left" data-aos-delay="600">
+                            <div
+                                class="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4 animate-spin-slow">
+                                <i data-lucide="target" class="text-white w-8 h-8"></i>
+                            </div>
+                            <h3 class="font-semibold mb-2 text-white">Professional Goal</h3>
+                            <p class="text-gray-300 text-sm professional-text">
+                                "Seeking to apply comprehensive knowledge in software development and contribute to
+                                innovative technology solutions."
+                            </p>
+                        </div>
+
+                        <div class="bg-gray-900/50 rounded-2xl p-6 border border-gray-700/50 hover-lift"
+                            data-aos="fade-left" data-aos-delay="800">
+                            <h3 class="font-semibold mb-4 text-white flex items-center gap-2">
+                                <i data-lucide="coffee" class="w-4 h-4 text-blue-400"></i>
+                                Languages
+                            </h3>
+                            <div class="space-y-2 text-sm text-gray-300 professional-text">
+                                <p>🇺🇸 English (Good)</p>
+                                <p>🇵🇭 Filipino (Native)</p>
+                                <p>🏝️ Chavacano (Good)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-4 relative z-10">
+        <div class="max-w-6xl mx-auto">
+            <div class="bg-black/50 rounded-3xl shadow-2xl p-8 lg:p-12 backdrop-blur-sm border border-gray-700/50"
+                data-aos="fade-up">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl lg:text-5xl font-bold mb-4 text-white" data-aos="fade-up">
+                        Technical <span class="gradient-text">Skills</span>
+                    </h2>
+                    <p class="text-gray-300 max-w-2xl mx-auto text-lg professional-text" data-aos="fade-up"
+                        data-aos-delay="200">
+                        Technologies and programming languages I work with
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6" id="skills-container">
+                    <!-- Skills will be populated by JavaScript -->
+                </div>
+
+                <div class="mt-12 grid md:grid-cols-3 gap-6" data-aos="fade-up" data-aos-delay="800">
+                    <div class="bg-gray-900/50 rounded-2xl p-6 text-center border border-gray-700/50 hover-lift">
+                        <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i data-lucide="globe" class="text-white w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-semibold text-white mb-2">Web Development</h3>
+                        <p class="text-gray-300 text-sm professional-text">HTML, CSS, JavaScript for creating modern web
+                            interfaces</p>
+                    </div>
+                    <div class="bg-gray-900/50 rounded-2xl p-6 text-center border border-gray-700/50 hover-lift">
+                        <div class="w-12 h-12 bg-cyan-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i data-lucide="code" class="text-white w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-semibold text-white mb-2">Programming</h3>
+                        <p class="text-gray-300 text-sm professional-text">Laravel, C++, Python for software development
+                            and problem-solving</p>
+                    </div>
+                    <div class="bg-gray-900/50 rounded-2xl p-6 text-center border border-gray-700/50 hover-lift">
+                        <div class="w-12 h-12 bg-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i data-lucide="database" class="text-white w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-semibold text-white mb-2">Database Management</h3>
+                        <p class="text-gray-300 text-sm professional-text">MySQL operations through XAMPP and database
+                            design</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 px-4 relative z-10">
+        <div class="max-w-6xl mx-auto">
+            <div class="bg-black/50 rounded-3xl shadow-2xl p-8 lg:p-12 backdrop-blur-sm border border-gray-700/50"
+                data-aos="fade-up">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl lg:text-5xl font-bold mb-4 text-white" data-aos="fade-up">
+                        Featured <span class="gradient-text">Projects</span>
+                    </h2>
+                    <p class="text-gray-300 max-w-2xl mx-auto text-lg professional-text" data-aos="fade-up"
+                        data-aos-delay="200">
+                        Web development projects showcasing my technical skills
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8" id="projects-container">
+                    <!-- Projects will be populated by JavaScript -->
+                </div>
+
+                <div class="text-center mt-12" data-aos="fade-up" data-aos-delay="600">
+                    <button
+                        class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-all hover:scale-105 btn-magic flex items-center gap-2 mx-auto"
+                        onclick="openLink('https://github.com/ShinoX0426')">
+                        <i data-lucide="github" class="w-4 h-4"></i>
+                        View All Projects on GitHub
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4 relative z-10">
+        <div class="max-w-6xl mx-auto">
+            <div class="bg-black/50 rounded-3xl shadow-2xl p-8 lg:p-12 backdrop-blur-sm border border-gray-700/50"
+                data-aos="fade-up">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl lg:text-5xl font-bold mb-4 text-white" data-aos="fade-up">
+                        Let's <span class="gradient-text">Connect</span>
+                    </h2>
+                    <p class="text-gray-300 max-w-2xl mx-auto text-lg professional-text" data-aos="fade-up"
+                        data-aos-delay="200">
+                        Ready to collaborate on your next project?
+                    </p>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-12">
+                    <div class="space-y-8">
+                        <div class="bg-gray-900/50 rounded-2xl p-8 border border-gray-700/50 hover-lift"
+                            data-aos="fade-right" data-aos-delay="300">
+                            <h3 class="text-2xl font-semibold mb-6 text-white flex items-center gap-2">
+                                <i data-lucide="mail" class="w-6 h-6 text-blue-400"></i>
+                                Get In Touch
+                            </h3>
+                            <div class="space-y-6" id="contact-info">
+                                <!-- Contact info will be populated by JavaScript -->
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-900/50 rounded-2xl p-6 border border-gray-700/50 hover-lift"
+                            data-aos="fade-right" data-aos-delay="500">
+                            <h3 class="font-semibold mb-4 text-white">Professional Certifications</h3>
+                            <div class="space-y-3 text-sm text-gray-300 professional-text">
+                                <div class="flex items-center gap-2">
+                                    <i data-lucide="check-circle" class="w-4 h-4 text-green-400"></i>
+                                    <span>Civil Service Examination (Professional) - March 2024</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <i data-lucide="check-circle" class="w-4 h-4 text-green-400"></i>
+                                    <span>Network Defense Essentials - April 2024</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <i data-lucide="check-circle" class="w-4 h-4 text-green-400"></i>
+                                    <span>Google Developer Student Club Member (2022-2023)</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <i data-lucide="check-circle" class="w-4 h-4 text-green-400"></i>
+                                    <span>Philippine Society of IT Member (2022-2024)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4" data-aos="fade-right" data-aos-delay="700">
+                            <button
+                                class="flex-1 bg-gray-800/50 hover:bg-gray-700 text-white py-3 rounded-lg font-medium transition-all hover:scale-105 btn-magic flex items-center justify-center gap-2"
+                                onclick="openLink('https://www.linkedin.com/in/justin-salvador-32761536a/')">
+                                <i data-lucide="linkedin" class="w-4 h-4"></i>
+                                LinkedIn
+                            </button>
+                            <button
+                                class="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-medium transition-all hover:scale-105 btn-magic flex items-center justify-center gap-2"
+                                onclick="openLink('mailto:bjustinsalvador@gmail.com')">
+                                <i data-lucide="mail" class="w-4 h-4"></i>
+                                Send Email
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-900/50 rounded-2xl p-8 border border-gray-700/50 hover-lift"
+                        data-aos="fade-left" data-aos-delay="400">
+                        <div id="contact-form-container">
+                            <h3 class="text-2xl font-semibold mb-6 text-white flex items-center gap-2">
+                                <i data-lucide="send" class="w-6 h-6 text-blue-400"></i>
+                                Project Inquiry
+                            </h3>
+                            <form class="space-y-6" id="contact-form">
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-sm font-medium mb-2 text-gray-300">Full Name</label>
+                                        <input type="text" name="name"
+                                            class="w-full px-4 py-3 bg-gray-800/50 border border-gray-700/50 rounded-lg text-white placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                                            placeholder="John Doe" required>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium mb-2 text-gray-300">Email
+                                            Address</label>
+                                        <input type="email" name="email"
+                                            class="w-full px-4 py-3 bg-gray-800/50 border border-gray-700/50 rounded-lg text-white placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                                            placeholder="john@company.com" required>
+                                    </div>
+                                </div>
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label
+                                            class="block text-sm font-medium mb-2 text-gray-300">Company/Organization</label>
+                                        <input type="text" name="company"
+                                            class="w-full px-4 py-3 bg-gray-800/50 border border-gray-700/50 rounded-lg text-white placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                                            placeholder="Your Company">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium mb-2 text-gray-300">Project Type</label>
+                                        <select name="project-type"
+                                            class="w-full px-4 py-3 bg-gray-800/50 border border-gray-700/50 rounded-lg text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all">
+                                            <option>Web Development</option>
+                                            <option>Database Design</option>
+                                            <option>Software Development</option>
+                                            <option>Technical Consultation</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-2 text-gray-300">Project
+                                        Requirements</label>
+                                    <textarea name="message" rows="4"
+                                        class="w-full px-4 py-3 bg-gray-800/50 border border-gray-700/50 rounded-lg text-white placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                                        placeholder="Please describe your project requirements, timeline, and any specific technologies you'd like to use..."
+                                        required></textarea>
+                                </div>
+                                <button type="submit"
+                                    class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-medium transition-all hover:scale-105 btn-magic flex items-center justify-center gap-2">
+                                    <i data-lucide="send" class="w-4 h-4"></i>
+                                    Submit Inquiry
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-4 relative z-10">
+        <div class="max-w-6xl mx-auto">
+            <div class="bg-black/50 rounded-3xl shadow-2xl p-8 backdrop-blur-sm border border-gray-700/50"
+                data-aos="fade-up">
+                <div class="text-center">
+                    <div class="text-2xl font-bold text-white mb-4">
+                        JUSTIN<span class="text-blue-500 animate-pulse">●</span>
+                    </div>
+                    <p class="text-gray-300 mb-6 professional-text">Computer Science graduate passionate about web
+                        development and software solutions</p>
+                    <div class="border-t border-gray-700/50 pt-6">
+                        <p class="text-gray-500 text-sm">© 2024 Justin Jose B. Salvador. All rights reserved. | Computer
+                            Science Graduate & Web Developer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scroll-top"
+        class="fixed bottom-8 right-8 w-12 h-12 bg-blue-600 hover:bg-blue-700 text-white rounded-full flex items-center justify-center transition-all hover:scale-110 opacity-0 pointer-events-none z-50">
+        <i data-lucide="arrow-up" class="w-5 h-5"></i>
+    </button>
+
+    <script>
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize Lucide icons
+            lucide.createIcons();
+
+            // Initialize AOS
+            AOS.init({
+                duration: 1000,
+                once: true,
+                offset: 100
+            });
+
+            // Initialize all components
+            initGSAPAnimations();
+            initTypewriter();
+            initRoleRotation();
+            initSkills();
+            initProjects();
+            initContactInfo();
+            initSmoothScrolling();
+            initMobileMenu();
+            initScrollToTop();
+            initFormHandling();
+            initNavbarScroll();
+            hideLoadingScreen();
+        });
+
+        // Function to show fallback avatar if image fails to load
+        function showFallbackAvatar(img) {
+            img.style.display = 'none';
+            document.getElementById('fallback-avatar').style.display = 'flex';
+            lucide.createIcons(); // Re-initialize icons for the fallback
+        }
+
+        // GSAP Animations - Updated to remove profile photo animations
+        function initGSAPAnimations() {
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Skills animation - Fixed to properly target skill bars
+            ScrollTrigger.create({
+                trigger: '#skills',
+                start: 'top 80%',
+                onEnter: () => {
+                    const skillBars = document.querySelectorAll('.skill-bar');
+                    skillBars.forEach((bar, index) => {
+                        const level = bar.getAttribute('data-level');
+                        gsap.to(bar, {
+                            width: level + '%',
+                            duration: 2,
+                            ease: 'power2.out',
+                            delay: index * 0.2
+                        });
+                    });
+                }
+            });
+        }
+
+        // Typewriter effect
+        function initTypewriter() {
+            new Typed('#typed-name', {
+                strings: ['Justin Salvador'],
+                typeSpeed: 100,
+                startDelay: 1000,
+                showCursor: true,
+                cursorChar: '|'
+            });
+        }
+
+        // Role rotation
+        function initRoleRotation() {
+            const roles = ['Computer Science Graduate', 'UI/UX Designer', 'Front-End Developer'];
+            const roleElement = document.getElementById('role-text');
+            let currentRole = 0;
+
+            setInterval(() => {
+                gsap.to(roleElement, {
+                    duration: 0.5,
+                    opacity: 0,
+                    y: -20,
+                    onComplete: () => {
+                        currentRole = (currentRole + 1) % roles.length;
+                        roleElement.textContent = roles[currentRole];
+                        gsap.to(roleElement, { duration: 0.5, opacity: 1, y: 0 });
+                    }
+                });
+            }, 4000);
+        }
+
+        // Skills initialization based on actual resume
+        function initSkills() {
+            const skills = [
+                { name: 'HTML, CSS, JavaScript', level: 80, color: 'from-blue-400 to-cyan-500', icon: '🌐' },
+                { name: 'Laravel & PHP', level: 30, color: 'from-cyan-400 to-blue-500', icon: '🔧' },
+                { name: 'C++ & Python', level: 80, color: 'from-blue-400 to-indigo-500', icon: '💻' },
+                { name: 'MySQL & Database Design', level: 55, color: 'from-indigo-400 to-blue-500', icon: '🗄️' }
+            ];
+
+            const container = document.getElementById('skills-container');
+            skills.forEach((skill, index) => {
+                const skillCard = document.createElement('div');
+                skillCard.className = 'bg-gray-900/50 rounded-2xl p-6 hover:bg-gray-800 transition-all duration-300 group hover-lift border border-gray-700/50';
+                skillCard.setAttribute('data-aos', 'fade-up');
+                skillCard.setAttribute('data-aos-delay', (index + 1) * 100);
+
+                skillCard.innerHTML = `
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r ${skill.color} rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <span class="text-white text-lg">${skill.icon}</span>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-white">${skill.name}</h3>
+                            <p class="text-gray-300 text-sm">${skill.level}% proficiency</p>
+                        </div>
+                    </div>
+                    <div class="w-full bg-gray-700 rounded-full h-2">
+                        <div class="skill-bar h-2 bg-gradient-to-r ${skill.color} rounded-full" data-level="${skill.level}" style="width: 0%;"></div>
+                    </div>
+                `;
+                container.appendChild(skillCard);
+            });
+        }
+
+        // Projects initialization
+        function initProjects() {
+            const projects = [
+                {
+                    title: 'Joju ArtShop E-Commerce Platform',
+                    description: 'Comprehensive e-commerce solution for art marketplace featuring secure payment integration, inventory management, and responsive design built with modern web technologies.',
+                    tech: ['HTML5', 'CSS3', 'JavaScript', 'PHP'],
+                    image: 'images/joju.png',
+                    github: 'https://github.com/ShinoX0426/finalProject',
+                    category: 'E-Commerce'
+                },
+                {
+                    title: 'Document Archive Management System',
+                    description: 'Enterprise-grade document tracking and archival system with advanced search capabilities, user authentication, and comprehensive audit trails for organizational efficiency.',
+                    tech: ['PHP', 'MySQL', 'Bootstrap', 'JavaScript'],
+                    image: 'images/tracking.png',
+                    github: 'https://github.com/regulus-j/document_archive',
+                    category: 'Enterprise Software'
+                },
+                {
+                    title: 'Intelligent Bus Scheduling System',
+                    description: 'Advanced transportation management solution featuring real-time scheduling algorithms, route optimization, and passenger capacity management for improved operational efficiency.',
+                    tech: ['Algorithm Design', 'C++', 'Data Analytics', 'Optimization'],
+                    image: 'images/bus.jpg',
+                    github: 'https://github.com/ShinoX0426/bus-simulation',
+                    category: 'Transportation Tech'
+                },
+                {
+                    title: 'Student Counseling Management Platform',
+                    description: 'Comprehensive student support system with appointment scheduling, progress tracking, confidential record management, and analytics dashboard for educational institutions.',
+                    tech: ['Database Design', 'PHP', 'MySQL', 'Web Development'],
+                    image: 'images/counseling.jpg',
+                    github: 'https://github.com/ShinoX0426/advdb-finals',
+                    category: 'Educational Technology'
+                }
+            ];
+
+            const container = document.getElementById('projects-container');
+            projects.forEach((project, index) => {
+                const projectCard = document.createElement('div');
+                projectCard.className = 'bg-gray-900/50 rounded-2xl hover:bg-gray-800 transition-all duration-300 group overflow-hidden hover-lift border border-gray-700/50';
+                projectCard.setAttribute('data-aos', 'fade-up');
+                projectCard.setAttribute('data-aos-delay', (index + 1) * 200);
+
+                projectCard.innerHTML = `
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                        <div class="absolute top-4 right-4 bg-blue-600 rounded-full px-3 py-1 text-xs font-medium">
+                            ${project.category}
+                        </div>
+                        <div class="absolute top-4 left-4 bg-black/50 backdrop-blur-sm rounded-full p-2">
+                            <i data-lucide="code" class="w-4 h-4 text-white"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-white">${project.title}</h3>
+                        <p class="text-gray-300 mb-4 text-sm professional-text leading-relaxed">${project.description}</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            ${project.tech.map(tech => `<span class="bg-blue-600/20 text-blue-300 text-xs px-2 py-1 rounded-full border border-blue-600/30">${tech}</span>`).join('')}
+                        </div>
+                        <div class="flex gap-3">
+                            <button onclick="openLink('${project.github}')" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm transition-all hover:scale-105 btn-magic flex items-center gap-1">
+                                <i data-lucide="github" class="w-3 h-3"></i>
+                                View Code
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(projectCard);
+            });
+            lucide.createIcons();
+        }
+
+        // Contact info initialization with actual details
+        function initContactInfo() {
+            const contactInfo = [
+                { icon: 'phone', label: 'Phone', value: '(+63) 936-137-5688', color: 'bg-blue-600' },
+                { icon: 'mail', label: 'Email', value: 'b.justinsalvador@gmail.com', color: 'bg-green-600' },
+                { icon: 'map-pin', label: 'Location', value: 'Flamingo Village, Upper Calarian, Zamboanga City', color: 'bg-indigo-600' }
+            ];
+
+            const container = document.getElementById('contact-info');
+            contactInfo.forEach((contact, index) => {
+                const contactItem = document.createElement('div');
+                contactItem.className = 'flex items-center gap-4';
+                contactItem.setAttribute('data-aos', 'fade-right');
+                contactItem.setAttribute('data-aos-delay', (index + 1) * 200);
+
+                contactItem.innerHTML = `
+                    <div class="${contact.color} w-12 h-12 rounded-full flex items-center justify-center">
+                        <i data-lucide="${contact.icon}" class="text-white w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <p class="font-medium text-white">${contact.label}</p>
+                        <p class="text-gray-300 professional-text">${contact.value}</p>
+                    </div>
+                `;
+                container.appendChild(contactItem);
+            });
+            lucide.createIcons();
+        }
+
+        // Smooth scrolling
+        function initSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+        }
+
+        // Mobile menu
+        function initMobileMenu() {
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+            });
+
+            menu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    menu.classList.add('hidden');
+                });
+            });
+        }
+
+        // Scroll to top
+        function initScrollToTop() {
+            const btn = document.getElementById('scroll-top');
+
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    btn.classList.remove('opacity-0', 'pointer-events-none');
+                } else {
+                    btn.classList.add('opacity-0', 'pointer-events-none');
+                }
+            });
+
+            btn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        // Form handling
+        function initFormHandling() {
+            const form = document.getElementById('contact-form');
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                const submitBtn = form.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<div class="loading-spinner mx-auto"></div>';
+                submitBtn.disabled = true;
+
+                setTimeout(() => {
+                    const container = document.getElementById('contact-form-container');
+                    gsap.to(container, {
+                        duration: 0.5,
+                        scale: 0.95,
+                        opacity: 0.7,
+                        onComplete: () => {
+                            container.innerHTML = `
+                                <div class="text-center py-8">
+                                    <div class="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                                        <i data-lucide="check" class="w-8 h-8 text-white"></i>
+                                    </div>
+                                    <h3 class="text-xl font-semibold text-white mb-2">Message Sent Successfully!</h3>
+                                    <p class="text-gray-300 professional-text">Thank you for your interest. I'll review your inquiry and respond as soon as possible.</p>
+                                </div>
+                            `;
+                            lucide.createIcons();
+                            gsap.to(container, { duration: 0.5, scale: 1, opacity: 1 });
+                        }
+                    });
+                }, 2000);
+            });
+        }
+
+        // Navbar scroll effect
+        function initNavbarScroll() {
+            const navbar = document.getElementById('navbar');
+
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 100) {
+                    navbar.classList.add('bg-black/70');
+                    navbar.classList.remove('bg-black/30');
+                } else {
+                    navbar.classList.add('bg-black/30');
+                    navbar.classList.remove('bg-black/70');
+                }
+            });
+        }
+
+        // Hide loading screen
+        function hideLoadingScreen() {
+            const loader = document.getElementById('loading-screen');
+            setTimeout(() => {
+                gsap.to(loader, {
+                    duration: 1,
+                    opacity: 0,
+                    onComplete: () => loader.remove()
+                });
+            }, 1500);
+        }
+
+        // Utility functions
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        function openLink(url) {
+            window.open(url, '_blank');
+        }
+
+        // Resume Download Function - Links to local PDF file
+        function downloadResume() {
+            // Create a link to download the local PDF file
+            const link = document.createElement('a');
+            link.href = './resume/Justin_Jose_Salvador_Resume.pdf'; // Local PDF file path
+            link.download = 'Justin_Jose_Salvador_Computer_Science_Resume.pdf';
+
+            // Check if file exists before attempting download
+            fetch(link.href)
+                .then(response => {
+                    if (response.ok) {
+                        // File exists, proceed with download
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+
+                        // Show success message
+                        showDownloadMessage('Resume downloaded successfully! Thank you for your interest.', 'success');
+                    } else {
+                        // File doesn't exist
+                        showDownloadMessage('Resume file not found. Please contact me directly for my latest resume.', 'error');
+                    }
+                })
+                .catch(() => {
+                    // Network error or file doesn't exist
+                    showDownloadMessage('Resume file not found. Please contact me directly for my latest resume.', 'error');
+                });
+        }
+
+        // Show download message function
+        function showDownloadMessage(message, type) {
+            const bgColor = type === 'success' ? 'bg-green-600' : 'bg-red-600';
+            const icon = type === 'success' ? 'check-circle' : 'alert-circle';
+
+            const successMessage = document.createElement('div');
+            successMessage.className = `fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ${bgColor} text-white px-8 py-4 rounded-lg shadow-2xl z-50 flex items-center gap-3 max-w-md`;
+            successMessage.innerHTML = `
+                <i data-lucide="${icon}" class="w-6 h-6"></i>
+                <div>
+                    <h3 class="font-semibold">${type === 'success' ? 'Download Started!' : 'File Not Found'}</h3>
+                    <p class="text-sm opacity-90">${message}</p>
+                </div>
+            `;
+
+            document.body.appendChild(successMessage);
+            lucide.createIcons();
+
+            // Animate in
+            gsap.from(successMessage, { duration: 0.5, scale: 0.8, opacity: 0, ease: 'back.out(1.7)' });
+
+            // Remove after 4 seconds
+            setTimeout(() => {
+                gsap.to(successMessage, {
+                    duration: 0.5,
+                    scale: 0.8,
+                    opacity: 0,
+                    onComplete: () => successMessage.remove()
+                });
+            }, 4000);
+        }
+    </script>
+</body>
+
+</html>
+
+## Key Design Features Added to the Photo Frame:
+
+1. **Multi-layered Decorative Frame**:
+- Gradient border with blue tones
+- Inner shadow effects for depth
+- Multiple border layers for a premium look
+
+2. **Rotating Border Elements**:
+- Two rotating gradient borders at different speeds
+- One rotates clockwise, the other counter-clockwise
+- Creates a dynamic, professional appearance
+
+3. **Corner Decorations**:
+- Small decorative elements in each corner
+- Gradient colored dots for visual interest
+- Positioned outside the main frame
+
+4. **Tech Icons Around Frame**:
+- Five floating tech icons representing different skills
+- Icons include: code, lightning (JavaScript), database, globe (web), and terminal
+- Each icon has its own floating animation with different delays
+- Tooltips show what each icon represents
+
+5. **Enhanced Visual Effects**:
+- Box shadows for depth
+- Gradient backgrounds
+- Smooth transitions and hover effects
+- Mobile-responsive design
+
+The photo frame now has a sophisticated, tech-themed design that reflects Justin's profession as a Computer Science
+graduate and web developer, while maintaining the centered positioning and all other functionalities of the portfolio.
